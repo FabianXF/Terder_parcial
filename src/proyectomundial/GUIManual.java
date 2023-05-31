@@ -40,6 +40,9 @@ public class GUIManual extends JFrame {
     // Elementos de opciones de Menú
     private JPanel jPanelMenu;
     
+        private JPanel jPanelSesion;
+    private JLabel btnSesion;
+    
     private JPanel jPanelMenuHome;
     private JLabel btnHome;
     
@@ -111,6 +114,9 @@ public class GUIManual extends JFrame {
         iconFIFA = new JLabel();
         jPanelMenu = new JPanel();
         
+         jPanelSesion = new JPanel();
+        btnSesion= new JLabel();
+        
         jPanelMenuHome = new JPanel();
         btnHome = new JLabel();
         
@@ -128,7 +134,7 @@ public class GUIManual extends JFrame {
         
         // Pinta el logo de la aplicación
         pintarLogo();
-        
+        iniciar_sec();
         // Pinta la opción de menú del Home
         pintarMenuHome();
         
@@ -180,6 +186,39 @@ public class GUIManual extends JFrame {
      * Define estilos, etiquetas, iconos que decoran la opción del Menú. 
      * Esta opción de Menu permite mostrar la página de bienvenida de la aplicación
      */
+        private void iniciar_sec(){
+                btnSesion.setIcon(new ImageIcon(getClass().getResource("/resources/icons/home.png"))); // NOI18N
+        btnSesion.setText("Iniciar secion");
+        btnSesion.setForeground(new java.awt.Color(255, 255, 255));
+        
+        JLabel vacioSecion = new JLabel();
+        jPanelSesion.setBackground(new java.awt.Color(17, 41, 63));
+        jPanelSesion.setPreferredSize((new java.awt.Dimension(220, 35)));
+        jPanelSesion.setLayout(new BorderLayout(15, 0));
+        jPanelSesion.add(vacioSecion, BorderLayout.WEST);
+        jPanelSesion.add(btnSesion, BorderLayout.CENTER);
+        jPanelMenu.add(jPanelSesion);
+        
+        btnSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                System.out.println("Iniciar secion");
+                accionSecion();
+            }
+        });   
+    }
+            private void accionSecion(){
+                     jLabelTop.setText("Inicio Secion");
+String nom=JOptionPane.showInputDialog(null,"Ingrese el usuario" );
+String pas=JOptionPane.showInputDialog(null,"Ingrese la contraseña" );
+                for (int i = 0; i < usuarios.length; i++) {
+                    
+                        if(nom.equalsIgnoreCase(usuarios[i][0])){
+                            if(pas.equalsIgnoreCase(usuarios[i][1])){
+                                haySesion=true;
+                            };
+    
+    }}}
+                
     private void pintarMenuHome() {
         btnHome.setIcon(new ImageIcon(getClass().getResource("/resources/icons/home.png"))); // NOI18N
         btnHome.setText("Home");
@@ -206,6 +245,7 @@ public class GUIManual extends JFrame {
      * Permite modificar la etiqueta de Navegación en Home, remover los elementos que hay en 
      * el panel de contenidos y agregar la imagen de inicio de la aplicación
      */
+
     private void accionHome() {
         jLabelTop.setText("Home");
         //jLabelTopDescription.setText("Bievenido al sistema de gestión de mundiales de fútbol");
@@ -459,6 +499,8 @@ public class GUIManual extends JFrame {
      * Se debe módificar este método para poder calcular y pintar las diferentes informaciones que son solicitadas
      * Revise el proceso que se siguen en los demás métodos para poder actualizar la información de los paneles
      */
+
+    
     private void accionDashboardRes() {
         
         
